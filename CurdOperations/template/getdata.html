@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Table</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.table-container {
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.styled-table th, .styled-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table th {
+    background: #4CAF50;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.styled-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.styled-table tr:hover {
+    background: #f1f1f1;
+    transform: scale(1.02);
+}
+
+.styled-table th, .styled-table td {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.styled-table th:hover, .styled-table td:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.styled-table {
+    animation: fadeIn 1s ease-out;
+}
+
+.styled-table th {
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.5s;
+}
+
+.styled-table td {
+    animation: fadeIn 1s ease-out;
+    animation-delay: 1s;
+}
+
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in s1 %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.age }}</td>
+                    <td>{{ i.phone }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.skills }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

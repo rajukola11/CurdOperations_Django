@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+                /* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: green;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    background: transparent;
+    font-size: 16px;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-bottom: 2px solid #3498db;
+    outline: none;
+    background: #ecf0f1;
+}
+
+.form-group input:focus ~ .animated-label,
+.form-group input:not(:placeholder-shown) ~ .animated-label {
+    transform: translateY(-25px);
+    font-size: 12px;
+    color: #3498db;
+}
+
+.animated-label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #7f8c8d;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 25px;
+}
+
+.submit-btn:hover {
+    background: #2c3e50;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Additional animations for the form container */
+.form-container {
+    animation: fadeInUp 1s ease-out both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style enhancements for hover effect on inputs */
+.form-group input:hover {
+    background: rgba(52, 152, 219, 0.1);
+}
+    </style>
+</head>
+<body>
+    <!-- <form action="{% url 'update' s2.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form> -->
+    <div class="form-container">
+        <h2>Update Details</h2>
+        <form action="{% url 'update' s2.id %}" method="POST" class="custom-form">
+            {% csrf_token %}
+            <div class="form-group">
+                 {{ form.name }}
+                <label for="name" class="animated-label">Name</label>
+            </div>
+            <div class="form-group">
+                {{ form.age }}
+                <label for="age" class="animated-label">Age</label>
+            </div>
+            <div class="form-group">
+                {{ form.phone }}
+                <label for="phone" class="animated-label">Phone</label>
+            </div>
+            <div class="form-group">
+                {{ form.address }}
+                <label for="location" class="animated-label">Location</label>
+            </div>
+            <div class="form-group">
+                {{ form.skills }}
+                <label for="dob" class="animated-label">Skills</label>
+            </div>
+            <button type="submit" class="submit-btn">Update</button>
+        </form>
+    </div>
+</body>
+</html>
